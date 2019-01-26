@@ -47,10 +47,8 @@ valor dessa propriedade a quantidade passada por parâmetro;
 booleano que representa "verdadeiro";
 */
 pessoa.andar = function(metros) {
-  return pessoa.caminhouQuantosMetros + metros;
-  if (pessoa.caminhouQuantosMetros >= 1) {
-    return pessoa.andando = true;
-  }
+  pessoa.caminhouQuantosMetros += metros;
+  pessoa.andando = true;
 }
 
 /*
@@ -58,7 +56,7 @@ Adicione um método ao objeto `pessoa` chamado `parar`, que irá modificar o val
 da propriedade `andando` para o valor booleano que representa "falso".
 */
 pessoa.parar = function() {
-  return pessoa.andando = false;
+  pessoa.andando = false;
 }
 
 /*
@@ -66,7 +64,7 @@ Crie um método chamado `nomeCompleto`, que retorne a frase:
 - "Olá! Meu nome é [NOME] [SOBRENOME]!"
 */
 pessoa.nomeCompleto = function() {
-  return "Olá! Meu nome é" + ' ' + pessoa.nome + ' ' + pessoa.sobrenome + "!";
+  return "Olá! Meu nome é " + pessoa.nome + ' ' + pessoa.sobrenome + "!";
 }
 
 /*
@@ -74,7 +72,7 @@ Crie um método chamado `mostrarIdade`, que retorne a frase:
 - "Olá, eu tenho [IDADE] anos!"
 */
 pessoa.mostrarIdade = function() {
-  return "Olá, eu tenho" + ' ' + pessoa.idade + ' ' + "anos!";
+  return "Olá, eu tenho " + pessoa.idade +  " anos!";
 }
 
 /*
@@ -82,7 +80,7 @@ Crie um método chamado `mostrarPeso`, que retorne a frase:
 - "Eu peso [PESO]Kg."
 */
 pessoa.mostrarPeso = function() {
-  return "Eu peso" + ' ' + pessoa.peso + "Kg";
+  return "Eu peso " + pessoa.peso + "Kg";
 }
 
 /*
@@ -90,7 +88,7 @@ Crie um método chamado `mostrarAltura` que retorne a frase:
 - "Minha altura é [ALTURA]m."
 */
 pessoa.mostrarAltura = function() {
-  return "Minha altura é" + ' ' + pessoa.altura + "m";
+  return "Minha altura é " + pessoa.altura + "m";
 }
 
 /*
@@ -104,7 +102,7 @@ pessoa.nomeCompleto(); //"Olá! Meu nome é Guilherme Henrique!"
 Qual a idade da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-console.log(pessoa.mostrarIdade()); //"Olá, eu tenho 19 anos!"
+pessoa.mostrarIdade(); //"Olá, eu tenho 19 anos!"
 
 /*
 Qual o peso da pessoa? (Use a instrução para responder e comentários
@@ -121,9 +119,9 @@ pessoa.mostrarAltura(); //"Minha altura é 1.8m"
 /*
 Faça a `pessoa` fazer 3 aniversários.
 */
-/*pessoa.fazerAniversario();
 pessoa.fazerAniversario();
-pessoa.fazerAniversario();*/
+pessoa.fazerAniversario();
+pessoa.fazerAniversario();
 
 
 /*
@@ -131,15 +129,15 @@ Quantos anos a `pessoa` tem agora? (Use a instrução para responder e
 comentários inline ao lado da instrução para mostrar qual foi a resposta
 retornada)
 */
-console.log(pessoa.mostrarIdade()); //"Olá, eu tenho 19 anos!"
+pessoa.mostrarIdade(); //"Olá, eu tenho 22 anos!"
 
 /*
 Agora, faça a `pessoa` caminhar alguns metros, invocando o método `andar` 3x,
 com metragens diferentes passadas por parâmetro.
 */
-pessoa.andar(5);
-pessoa.andar(20);
-pessoa.andar(50);
+pessoa.andar(100);
+pessoa.andar(200);
+pessoa.andar(300);
 
 /*
 A pessoa ainda está andando? (Use a instrução para responder e comentários
@@ -162,7 +160,7 @@ pessoa.andando; // False
 Quantos metros a pessoa andou? (Use uma instrução para responder e comentários
 inline ao lado da instrução para mostrar a resposta retornada)
 */
-pessoa.caminhouQuantosMetros; // 75
+pessoa.caminhouQuantosMetros; // 600
 
 /*
 Agora vamos deixar a brincadeira um pouco mais divertida! :D
@@ -182,40 +180,23 @@ método), que será concatenada com a frase de retorno, mostrando a resposta
 correta, de acordo com os dados inseridos no objeto.
 */
 pessoa.apresentacao = function() {
-  var fraseFeminino = "Olá, eu sou a ";
-  var fraseMasculino = "Olá, eu sou o ";
-  var menorIdade = " ano, ";
-  var maiorIdade = " anos, ";
-  var metrosCaminhados = " metros!";
-  var metroCaminhado = " metro!";
+  var sexo = "o";
+  var anosIdade = "anos";
+  var metrosCaminhados = "metros";
 
-  if(pessoa.sexo == 'Feminino' && pessoa.idade === 1 && pessoa.caminhouQuantosMetros === 1) {
-    return fraseFeminino + pessoa.nome + " tenho " + pessoa.idade + menorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metroCaminhado;
-  } else if (pessoa.sexo === 'Feminino' && pessoa.idade === 1) {
-    return fraseFeminino + pessoa.nome + " tenho " + pessoa.idade + menorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metrosCaminhados;
-  } else if (pessoa.sexo === 'Feminino' && pessoa.caminhouQuantosMetros === 1) {
-    return fraseFeminino + pessoa.nome + " tenho " + pessoa.idade + maiorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metroCaminhado;
-  } else if (pessoa.sexo === 'Feminino' && pessoa.idade !== 1 && pessoa.caminhouQuantosMetros !== 1) {
-    return fraseFeminino + pessoa.nome + " tenho " + pessoa.idade + maiorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metrosCaminhados;
-  } else if (pessoa.sexo === 'Feminino' && pessoa.idade !== 1) {
-    return fraseFeminino + pessoa.nome + " tenho " + pessoa.idade + maiorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metroCaminhado;
-  } else if (pessoa.sexo === 'Feminino' && pessoa.caminhouQuantosMetros !== 1) {
-    return fraseFeminino + pessoa.nome + " tenho " + pessoa.idade + menorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metrosCaminhados;
-  } else if (pessoa.sexo === 'Masculino' && pessoa.idade === 1 && pessoa.caminhouQuantosMetros === 1) {
-    return fraseMasculino + pessoa.nome + " tenho " + pessoa.idade + menorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metroCaminhado;
-  } else if(pessoa.sexo === 'Masculino' && pessoa.idade === 1) {
-    return fraseMasculino + pessoa.nome + " tenho " + pessoa.idade + menorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metrosCaminhados;
-  } else if (pessoa.sexo === 'Masculino' && pessoa.caminhouQuantosMetros === 1) {
-    return fraseMasculino + pessoa.nome + " tenho " + pessoa.idade + maiorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metroCaminhado;
-  } else if (pessoa.sexo === 'Masculino' && pessoa.idade !== 1 && pessoa.caminhouQuantosMetros !== 1) {
-    return fraseMasculino + pessoa.nome + " tenho " + pessoa.idade + maiorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metrosCaminhados;
-  } else if (pessoa.sexo === 'Masculino' && pessoa.idade !== 1) {
-    return fraseMasculino + pessoa.nome + " tenho " + pessoa.idade + maiorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metroCaminhado;
-  } else if (pessoa.sexo === 'Masculino' && pessoa.caminhouQuantosMetros !== 1) {
-    return fraseMasculino + pessoa.nome + " tenho " + pessoa.idade + menorIdade + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + metrosCaminhados;
-  } else {
-    return "Olá, eu sou o " + pessoa.nome + " tenho " + pessoa.idade + " anos, " + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + " metros!";
+  if (pessoa.sexo === 'Feminino') {
+    sexo = "a";
   }
+
+  if (pessoa.idade === 1) {
+    anosIdade = "ano";
+  }
+
+  if (pessoa.caminhouQuantosMetros === 1) {
+    metrosCaminhados = "metro";
+  }
+
+  return "Olá, eu sou " + sexo + ' ' + pessoa.nome + ' ' + pessoa.sobrenome + " tenho " + pessoa.idade + ' ' + anosIdade + ", " + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + ' ' + metrosCaminhados + "!";
 }
 
 // Agora, apresente-se ;)
